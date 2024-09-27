@@ -6,7 +6,7 @@ public class CheckPointManager : MonoBehaviour
     private Vector3 currentRespawnPointPos;
     private CheckPointSyncData checkPointSyncData;
     private GameObject[] players;
-
+    
     void Awake()
     {
         checkPointSyncData = GetComponent<CheckPointSyncData>();

@@ -13,13 +13,20 @@ MonoBehaviour:
   m_Name: AssaultRifle
   m_EditorClassIdentifier: 
   name: AssaultRifle
-  prefab: {fileID: 3958516044013683163, guid: 0e01a6d881471b94d8e910003cfe437d, type: 3}
+  type: 1
+  prefab: {fileID: 8849469495234150434, guid: 49bafd85045cda840a8d7c5d146f5c91, type: 3}
+  gunHoldAnimation: {fileID: 7400000, guid: 538169b4c7a4861489917e1776c4aa16, type: 2}
+  shootClip: {fileID: 8300000, guid: 159aa6b3153429349b06479ba4bcb8fc, type: 3}
+  bulletDamage: 20
+  reloadTime: 2
+  isAutoFire: 1
+  fireRatePerSecond: 8
+  kickback: 0.025
+  canAimDownSight: 1
+  aimSpeed: 10
+  aimFieldOfView: 50
+  isAmmoLimited: 1
   maxStashAmmo: 270
   magazineSize: 30
-  bulletDamage: 10
-  fireRatePerSecond: 8
-  reloadTime: 1
-  aimSpeed: 10
-  aimFieldOfView: 15
-  currentStashAmmo: 30
-  currentMagazineAmmo: 9999
+  currentStashAmmo: 270
+  currentMagazineAmmo: 30

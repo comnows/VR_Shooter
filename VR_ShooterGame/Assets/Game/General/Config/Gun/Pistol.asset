@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c072010f795bb8f469c8ac9f90a81fdb, type: 3}
+  m_Name: Pistol
+  m_EditorClassIdentifier: 
+  name: Pistol
+  type: 2
+  prefab: {fileID: 8688101942146344956, guid: a023bf8d0112f78418afe22f62e78d6b, type: 3}
+  gunHoldAnimation: {fileID: 7400000, guid: 3baf72132eee8e44cabdf868a391cc60, type: 2}
+  shootClip: {fileID: 8300000, guid: 1e940d15337ad1e43b0cc1b2430d7c06, type: 3}
+  bulletDamage: 5
+  reloadTime: 1
+  isAutoFire: 0
+  fireRatePerSecond: 1
+  kickback: 0.01
+  canAimDownSight: 0
+  aimSpeed: 0
+  aimFieldOfView: 0
+  isAmmoLimited: 0
+  maxStashAmmo: 0
+  magazineSize: 12
+  currentStashAmmo: 999
+  currentMagazineAmmo: 12

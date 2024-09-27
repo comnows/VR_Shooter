@@ -5,6 +5,26 @@ TagManager:
   serializedVersion: 2
   tags:
   - CheckPoint
+  - PNameTag
+  - ARMagazine
+  - ARGun
+  - BossGuard
+  - VRCamera
+  - Realtime
+  - Boss
+  - Enemy
+  - Door
+  - Door1Pos
+  - Door2Pos
+  - Canvas
+  - BossGuardPos
+  - NEPos
+  - STEPos
+  - SHEPos
+  - NERPos
+  - STEKPos
+  - NEKPos
+  - SHEKPos
   layers:
   - Default
   - TransparentFX
@@ -17,8 +37,8 @@ TagManager:
   - Grab
   - Body
   - Second Hand Grab
-  - 
-  - 
+  - Wall
+  - Interactable
   - 
   - 
   - 

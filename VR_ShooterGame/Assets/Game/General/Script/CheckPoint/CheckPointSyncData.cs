@@ -12,7 +12,7 @@ public class CheckPointSyncData : RealtimeComponent<CheckPointDataModel>
     private void Awake() 
     {
         _realtimeView = GetComponent<RealtimeView>();  
-        _respawnPointPos = GameObject.Find("SpawnPoint").transform.position;
+        _respawnPointPos = GameObject.Find("SpawnPointLV1").transform.position;
         checkPointManager = GetComponent<CheckPointManager>();
     }
 
@@ -24,7 +24,9 @@ public class CheckPointSyncData : RealtimeComponent<CheckPointDataModel>
         
         if (currentModel != null) {
             if (currentModel.isFreshModel)
+            {
                 currentModel.respawnPointPos = _respawnPointPos;
+            }
             UpdateRespawnPoint();
             currentModel.respawnPointPosDidChange += RespawnPointDidChange;
         }

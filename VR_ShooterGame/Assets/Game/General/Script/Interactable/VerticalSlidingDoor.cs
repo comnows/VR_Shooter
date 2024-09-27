@@ -7,26 +7,29 @@ using Normal.Realtime;
 public class VerticalSlidingDoor : Interactable
 {
     public bool isOpen = false;
-    [SerializeField] private float slideAmount = 1.0f;
+    [SerializeField] private float slideAmount = 3.0f;
     [SerializeField] private float slideSpeed = 1.0f;
 
     private Vector3 startPosition;
     private Vector3 slideDirection = Vector3.up;
-    private RealtimeView _playerRealtimeView;
+    private RealtimeView _realtimeView;
     private RealtimeTransform _realtimeTransform;
 
     private void Start()
     {
-        startPosition = transform.position;
+        //startPosition = transform.position;
+        _realtimeView = GetComponent<RealtimeView>();
         _realtimeTransform = GetComponent<RealtimeTransform>();
     }
 
     public override void Interact(GameObject player)
     {
-        if (_realtimeTransform.isUnownedInHierarchy)
-        _playerRealtimeView = player.GetComponent<RealtimeView>();
-        int playerID = _playerRealtimeView.ownerIDInHierarchy;
-        GetComponent<RealtimeTransform>().SetOwnership(playerID);
+        startPosition = transform.position;
+        if (_realtimeTransform.isOwnedRemotelySelf || _realtimeTransform.isUnownedSelf)
+        {
+            _realtimeView.RequestOwnership();
+            _realtimeTransform.RequestOwnership();
+        }
 
         Debug.Log("Door opening");
 
@@ -37,6 +40,14 @@ public class VerticalSlidingDoor : Interactable
 
     public override void VRInteract(SelectEnterEventArgs args)
     {
+
+        startPosition = transform.position;
+        if (_realtimeTransform.isOwnedRemotelySelf || _realtimeTransform.isUnownedSelf)
+        {
+            _realtimeView.RequestOwnership();
+            _realtimeTransform.RequestOwnership();
+        }
+        
         Debug.Log("Door opening");
 
         if (isOpen) return;

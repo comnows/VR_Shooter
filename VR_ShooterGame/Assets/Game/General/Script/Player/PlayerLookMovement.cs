@@ -11,7 +11,7 @@ public class PlayerLookMovement : MonoBehaviour
     private float xInput;
     private float yInput;
 
-    [SerializeField] private float mouseSensitivity = 100f;
+    [SerializeField] private float mouseSensitivity = 1200f;
     private float xRotation = 0f;
 
     private RealtimeView _realtimeView;

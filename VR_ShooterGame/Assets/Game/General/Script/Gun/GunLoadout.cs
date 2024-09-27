@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GunLoadout : MonoBehaviour
 {
-    public GunData[] guns;
+    public GunData[] guns = new GunData[3];
 
     private void Awake()
     {
@@ -15,7 +15,16 @@ public class GunLoadout : MonoBehaviour
     {
         foreach(GunData gun in guns)
         {
-            gun.Initialize();
+            if(gun != null)
+            {
+                gun.Initialize();
+            }
         }
+    }
+
+    public void AddGun(GunData gun)
+    {
+        int slot = gun.type - 1;
+        guns[slot] = gun;
     }
 }

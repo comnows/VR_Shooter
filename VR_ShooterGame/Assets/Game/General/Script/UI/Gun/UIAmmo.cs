@@ -4,7 +4,7 @@ using TMPro;
 public class UIAmmo : MonoBehaviour
 {
     private Gun gun;
-    private GunSwitching gunSwitching;
+    //private GunSwitching gunSwitching;
     [SerializeField] private TMP_Text magazineAmmoText;
     [SerializeField] private TMP_Text stashAmmoText;
 
@@ -29,7 +29,7 @@ public class UIAmmo : MonoBehaviour
     public void InitScript(GameObject player)
     {
         gun = player.GetComponent<Gun>();
-        gunSwitching = player.GetComponent<GunSwitching>();
+        //gunSwitching = player.GetComponent<GunSwitching>();
         SetAmmoText(gun.gunData.currentMagazineAmmo, gun.gunData.currentStashAmmo);
         Subscribe();
     }
@@ -38,14 +38,14 @@ public class UIAmmo : MonoBehaviour
     {
         gun.OnGunShoot += SetMagazineAmmoText;
         gun.OnGunReload += SetAmmoText;
-        gunSwitching.OnGunSwitch += SetAllAmmoText;
+        //gunSwitching.OnGunSwitch += SetAllAmmoText;
     }
 
     private void OnDisable()
     {
         gun.OnGunShoot -= SetMagazineAmmoText;
         gun.OnGunReload -= SetAmmoText;
-        gunSwitching.OnGunSwitch -= SetAllAmmoText;
+        //gunSwitching.OnGunSwitch -= SetAllAmmoText;
     }
 
     private void SetMagazineAmmoText()

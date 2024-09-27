@@ -5,17 +5,16 @@ using UnityEngine;
 public class EnemyStaffTrigger : MonoBehaviour
 {
     private EnemySyncData enemySyncData;
-
     private void Awake() 
     {
         enemySyncData = GetComponentInParent<EnemySyncData>();
     }
-
+    
     private void OnTriggerEnter(Collider other) 
     {
         if (other.tag == "Player" && enemySyncData._enemyHP > 0)
         {
-            other.GetComponent<PlayerSyncData>().DecreasePlayerHP(20);
+            other.GetComponent<PlayerSyncData>().DecreasePlayerHP(10);
         }
     }
 }

@@ -33,7 +33,7 @@ public class AmmoBox : Interactable
             //ammo added event trigger for UI or else
         }
 
-        gun.OnGunReload?.Invoke(gun.gunData.currentMagazineAmmo, gun.gunData.currentStashAmmo);
+        gun.OnGunReload?.Invoke(gun.gunData.currentMagazineAmmo, gun.gunData.currentStashAmmo); //edit ammo ui text
 
         if(stashAmmo <= 0)
         {
@@ -43,6 +43,35 @@ public class AmmoBox : Interactable
 
     public override void VRInteract(SelectEnterEventArgs args)
     {
-        Gun gun = args.interactorObject.transform.GetComponentInParent<Gun>();
+        GunLoadout gunLoadout = args.interactorObject.transform.GetComponent<GunLoadout>();
+        GunData gunData = gunLoadout.guns[0];
+
+        if(gunData.IsAmmoFull()) return;
+
+        int stashSpace = (gunData.maxStashAmmo + gunData.magazineSize) - (gunData.currentStashAmmo + gunData.currentMagazineAmmo);
+
+        if(stashSpace < stashAmmo)
+        {
+            gunData.AddAmmo(stashSpace);
+
+            stashAmmo -= stashSpace;
+            
+            //ammo added event trigger for UI or else
+        }
+        else
+        {
+            gunData.AddAmmo(stashAmmo);
+
+            stashAmmo -= stashAmmo;
+
+            //ammo added event trigger for UI or else
+        }
+
+        //gun.OnGunReload?.Invoke(gun.gunData.currentMagazineAmmo, gun.gunData.currentStashAmmo); //edit ammo ui text
+
+        if(stashAmmo <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

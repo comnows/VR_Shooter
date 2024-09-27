@@ -7,16 +7,20 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private Camera playerCamera;
     private PlayerInteractInput playerInteractInput;
 
-    private Ray interactRay;
-    private RaycastHit hitInfo;
+    private Ray interactRay, reviveRay;
+    private RaycastHit hitInfo, targetToRevive;
 
+    private float reviveTime;
+    private float holdTimer;
     private Color rayColor = Color.blue;
     
-    [SerializeField] private float interactRange = 5f;
+    [SerializeField] private float interactRange = 5f, reviveRange = 1.5f;
 
     private void Awake()
     {
         playerInteractInput = GetComponent<PlayerInteractInput>();
+        reviveTime = 3f;
+        holdTimer = reviveTime;
     }
 
     // Update is called once per frame
@@ -38,10 +42,34 @@ public class PlayerInteract : MonoBehaviour
                 }
             }
 
-            rayColor = Color.yellow;
-            Debug.Log(hitInfo.transform.name);
+            //rayColor = Color.yellow;
+            //Debug.Log(hitInfo.transform.name);
         }
 
-        Debug.DrawRay(interactRay.origin, interactRay.direction * interactRange, rayColor);
+        //Debug.DrawRay(interactRay.origin, interactRay.direction * interactRange, rayColor);
+        
+
+        reviveRay = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
+
+        if(Physics.Raycast(reviveRay, out targetToRevive, reviveRange))
+        {
+            PlayerStatus playerStatus = targetToRevive.transform.GetComponent<PlayerStatus>();
+            if (playerStatus != null && playerStatus.playerHP <=0)
+            {
+                holdTimer -= Time.deltaTime;
+                if (holdTimer < 0)
+                {
+                    playerStatus.RevivingPlayer();
+                }
+                rayColor = Color.green;
+                Debug.Log(hitInfo.transform.name);
+            }
+            else
+            {
+                holdTimer = reviveTime;
+            }
+        }
+
+        Debug.DrawRay(reviveRay.origin, reviveRay.direction * reviveRange, rayColor);
     }
 }

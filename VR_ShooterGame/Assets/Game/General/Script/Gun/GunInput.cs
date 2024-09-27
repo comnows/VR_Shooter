@@ -7,7 +7,7 @@ public class GunInput : MonoBehaviour
 {
     GunInputActions gunInputActions;
 
-    private InputAction shootAction;
+    public InputAction shootAction;
     public InputAction aimAction;
     public InputAction reloadAction;
 
